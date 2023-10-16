@@ -1,0 +1,55 @@
+<section class="login" >
+  <div class="container-fluid" >
+    <div class="wrapper vh-100">
+      <div class="row align-items-center h-100">
+        <div class="col-lg-4 offset-lg-4">
+          <div class="mx-auto" style="width: 400px">
+            <div class="card p-4" style="background: transparent; background-color: rgba(249, 248, 248, 0.477);">
+              <div class="d-flex justify-content-center">
+                <div class="icon-block">
+                  <img src="../../assets/images/login2.png"/>
+                </div>
+              </div>
+              <div class="text-center my-4">
+                <h2 class="fw-bold" style="color: black;">Log In</h2>
+                <form  [formGroup]="loginForm" (ngSubmit)="submitForm()">
+                <p>Phone Number:</p>
+               
+                
+                  <div class="form-group">
+                    
+                    <input type="tel"  maxlength="10"   class="form-control" id="phone" placeholder="Enter Phone number"  [(ngModel)]="inputText"  formControlName="phone" (input)="checkPhoneNumberInDatabase()">
+                    <div *ngIf="loginForm.get('phone')?.touched">
+                      <div *ngIf="loginForm.get('phone')?.hasError('required')">
+                        <small class="text-danger">Phone number can't be empty</small>
+                      </div>
+                      <div *ngIf="loginForm.get('phone')?.hasError('pattern')">
+                        <small class="text-danger">Please enter a valid 10-digit phone number starting with 6 or 7 or 8 or 9 </small>
+                      </div>
+                      <div *ngIf="maya">
+                        <small class="text-danger">Please enter a postpaid number</small>
+                      </div>                     
+                    </div>
+                  </div>
+                
+                  <button type="button" class="btn btn-primary" [disabled]="!loginForm.valid || maya" (click)="otpPage()">Send OTP</button>
+                
+            <div class="otp" *ngIf="otp1">  
+            <div class="text-dark">Enter 6-digit code from yout two factor authentication APP.</div>
+              <div class="my-4">
+                <ng-otp-input  (onInputChange)="onOtpChange($event)"  [config]="configOptions"></ng-otp-input>
+              </div>
+              <button class="btn btn-lg w-100 mt-3 mb-4 py-3" [ngClass]="btnStatus" 
+               (click)="validateOtp()"  >{{ this.inputDigitLeft }}</button>
+            </div> 
+            <p>Don't have an account? <a style="color: rgb(16, 16, 139);"   [routerLink]="['/signup']">Sign Up</a></p>
+            <!-- [disabled]="!otpValidated" -->
+          </form>  
+          </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>

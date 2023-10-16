@@ -1,0 +1,27 @@
+<app-adminheader></app-adminheader>
+<div class="table-container">
+    <div >
+      <table class="table table-striped">
+        <thead>
+            <tr>
+              <th>Customer ID</th>
+              <th>Phone Number</th>
+              <th>Email</th>
+              <th>Password</th>       
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let c of customerList">
+              <td>{{c.userid}}</td>
+              <td>{{ c.phone}}</td>
+              <td>{{ c.email}}</td>
+              <td>{{ c.password}}</td>
+                     
+            </tr>
+          </tbody>
+      </table>
+    </div>
+  </div>
+  
+
+

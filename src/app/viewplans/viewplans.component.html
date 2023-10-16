@@ -1,0 +1,53 @@
+<app-header></app-header>
+
+<body>
+<!-- ***** Header Area End ***** -->
+
+<section class="heading-page header-text" id="top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h6>VIEW ALL THE EXCITING PLANS</h6>
+          <h2>AMAZING PLANS</h2>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="meetings-page" id="meetings">
+    <div class="container" style="width: 100%;">
+      <div class="row">
+        <div *ngFor="let plan of planCardList" class="col-lg-4">
+          <div >
+            <div class="meeting-item">
+              <div class="thumb">
+                <div class="price">
+                  <span>{{ plan.price }}</span>
+                </div>
+                <a href="viewplans.component.html"><img src="{{ plan.imgsrc }}" alt=""></a>
+              </div>
+              <div class="down-content">
+                <div class="date">
+                  <h6>BENEFITS</h6>
+                </div><br>
+                <hr>
+                <p>Data:&nbsp;&nbsp;&nbsp;{{ plan.data }}</p>
+                <hr>
+                <p>Validity:&nbsp;&nbsp;&nbsp;{{ plan.validity }}</p>
+                <hr>
+                <p>Voice Call:&nbsp;&nbsp;&nbsp;{{ plan.voiceCall }}</p>
+                <hr>
+                <p>SMS Per Day:&nbsp;&nbsp;&nbsp;{{ plan.sms }}</p>
+                <hr>
+                <p>{{ plan.offers }}</p><br>
+                <button (click)="buyPlan(plan.id)" [routerLink]="['/login', plan.id]" type="button" class="btn btn-dark">BUY</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+</body>
+

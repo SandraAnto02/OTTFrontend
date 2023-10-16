@@ -1,0 +1,44 @@
+<!-- ***** Header Area Start ***** -->
+<header class="userheader-area userheader-sticky" style="position: fixed;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="index.html" class="logo">
+                        Digi Hub
+                    </a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                        <li class="scroll-to-section"><a routerLink="/userpage" class="active">Home</a></li>
+                       
+                        <li class="has-sub">
+                            <a href="javascript:void(0)">Post paid</a>
+                            <ul class="sub-menu">
+                                <li><a routerLink="/userviewplans">View Plans</a></li>
+                                <li><a routerLink="/paybill">Pay Bills</a></li>
+                                
+                                
+                            </ul>
+                        </li>
+                        <li class="has-sub">
+                          <a href="javascript:void(0)">My Account</a>
+                          <ul class="sub-menu">
+                              <li><a routerLink="/userpage">My profile</a></li>
+                              <li><button (click)="logout()" style="width: 200px; padding-right: 90px; height: 40px;"  >Log out</button></li>
+                              
+                          </ul>
+                      </li>
+                        
+                    </ul>        
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- ***** Header Area End ***** -->

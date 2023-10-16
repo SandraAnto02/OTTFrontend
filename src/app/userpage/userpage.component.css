@@ -1,0 +1,19 @@
+
+  
+.card-body{
+    padding: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+.my-4{
+    margin-top: 0px;
+}
+
+.img {
+    max-width: 50%; /* Set the maximum width to control the size */
+    height: auto; /* Maintain the aspect ratio */
+    /* You can also add additional styles if needed */
+  }
+  

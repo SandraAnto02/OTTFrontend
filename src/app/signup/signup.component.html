@@ -1,0 +1,60 @@
+<section class="login">
+  <div class="login-card">
+    <h2>Sign Up</h2><br>
+    <form #signupForm="ngForm" (ngSubmit)="onSignUp()">
+
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" placeholder="Enter your name" [(ngModel)]='usr.username' name="username" #username="ngModel" required [class.is-invalid]="username.invalid && username.touched" pattern="^[a-zA-Z]+$">
+        <div *ngIf="username.touched"> 
+            <div *ngIf="username.invalid"> 
+            <small class="text-danger" *ngIf="username.errors?.['required']">Please enter your name</small>
+            <small class="text-danger" *ngIf="username.errors?.['pattern']">Enter valid name</small>
+            </div>
+        </div>
+      </div>
+
+
+      <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Phone number</label>
+          <input type="tel" class="form-control" id="phone" placeholder="Enter Phone number" [(ngModel)]='usr.phone' name="phone" #phone="ngModel" required [class.is-invalid]="phone.invalid && phone.touched" pattern="^[1-9][0-9]{9}$">
+          <div *ngIf="phone.touched"> 
+              <div *ngIf="phone.invalid"> 
+              <small class="text-danger" *ngIf="phone.errors?.['required']">Phone number Can't be empty</small>
+              <small class="text-danger" *ngIf="phone.errors?.['pattern']">Enter valid phone number</small>
+              </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Email ID</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter Email ID" [(ngModel)]='usr.email' name="email" #email="ngModel" required [class.is-invalid]="email.invalid && email.touched" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
+          <div *ngIf="email.touched"> 
+            <div *ngIf="email.invalid"> 
+              <small class="text-danger" *ngIf="email.errors?.['required']">Email ID can't be empty</small>
+              <small class="text-danger" *ngIf="email.errors?.['pattern']">Invalid email format</small>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Enter Password" [(ngModel)]='usr.password' name="password" #password="ngModel" required [class.is-invalid]="password.invalid && password.touched" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$">
+          <div *ngIf="password.touched"> 
+            <div *ngIf="password.invalid"> 
+              <small class="text-danger" *ngIf="password.errors?.['required']">Enter Password</small>
+              <small class="text-danger" *ngIf="password.errors?.['pattern']">Password should contain at least one uppercase letter, one lowercase letter, and one number</small>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="showSuccessMessage" class="alert alert-success">
+          Registered successfully!
+        </div>
+        
+        <button type="submit" [disabled]="signupForm.form.invalid">Sign Up</button> &nbsp;&nbsp;&nbsp;<button routerLink="/home" type="submit">Back</button>
+  </form>
+  
+
+    
+  </div>
+</section>
