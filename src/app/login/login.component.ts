@@ -196,6 +196,8 @@ validateOtp()
     if(this.inputText.length==10)
     {
     console.log(this.inputText);
+    console.log("hi");
+    
     }
   }
 
@@ -223,5 +225,7 @@ validateOtp()
       );
     }
   }
+  
+  
 
 }
