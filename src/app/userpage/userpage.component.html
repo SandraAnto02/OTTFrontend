@@ -47,16 +47,16 @@
                       <h3 class="card-title" style="color: black;">ACCOUNT DETAILS</h3><br>
                       <div class="text-center" style="margin-top: 0px;">
                         <h2 class="fw-bold" style="color: black;"></h2>
-                        <form  [formGroup]="loginForm" (ngSubmit)="submitForm()">
+                        <form  [formGroup]="loginForm" (submit)="submitForm()">
 
                           <div >
                             <p>Name:</p>
-                            <input type="text" class="form-control" id="username" placeholder="Enter your name" name="username" formControlName="username">
-                            <div *ngIf="loginForm.get('username')?.touched">
-                              <div *ngIf="loginForm.get('username')?.hasError('required')">
+                            <input type="text" class="form-control" id="linkedname" placeholder="Enter your name" name="linkedname" formControlName="linkedname" [(ngModel)]="linkedData.linkedname">
+                            <div *ngIf="loginForm.get('linkedname')?.touched">
+                              <div *ngIf="loginForm.get('linkedname')?.hasError('required')">
                                 <small class="text-danger">Please enter your name</small>
                               </div>
-                              <div *ngIf="loginForm.get('username')?.hasError('pattern')">
+                              <div *ngIf="loginForm.get('linkedname')?.hasError('pattern')">
                                 <small class="text-danger">Enter valid name</small>
                               </div>
                             </div>  
@@ -67,31 +67,33 @@
   
                           <div>
                             <p>Email ID:</p>
-                            <input type="email" class="form-control" id="email" placeholder="Enter Email ID" name="email" formControlName="email">
-                            <div *ngIf="loginForm.get('email')?.touched">
-                              <div *ngIf="loginForm.get('email')?.hasError('required')">
+                            <input type="email" class="form-control" id="linkedemail" placeholder="Enter Email ID" name="linkedemail" formControlName="linkedemail" [(ngModel)]="linkedData.linkedemail">
+                            <div *ngIf="loginForm.get('linkedemail')?.touched">
+                              <div *ngIf="loginForm.get('linkedemail')?.hasError('required')">
                                 <small class="text-danger">Email ID can't be empty</small>
                               </div>
-                              <div *ngIf="loginForm.get('email')?.hasError('pattern')">
+                              <div *ngIf="loginForm.get('linkedemail')?.hasError('pattern')">
                                 <small class="text-danger">Invalid email format</small>
                               </div>
                             </div>  
                           </div>
 
                           <p>Phone Number:</p>
-                           <input type="tel" maxlength="10" id="mobile" placeholder="Enter mobile number" name="mobile" [(ngModel)]="inputText"  formControlName="phone" (input)="checkPhoneNumberInDatabase()"><br><br>
-                            <div *ngIf="loginForm.get('phone')?.touched">
-                              <div *ngIf="loginForm.get('phone')?.hasError('required')">
+                           <input type="tel" maxlength="10" id="linkedphone" placeholder="Enter mobile number" name="linkedphone" [(ngModel)]="inputText" [(ngModel)]="linkedData.linkedphone"  formControlName="linkedphone" (input)="checkPhoneNumberInDatabase()"><br><br>
+                            <div *ngIf="loginForm.get('linkedphone')?.touched">
+                              <div *ngIf="loginForm.get('linkedphone')?.hasError('required')">
                               <small class="text-danger">Phone number can't be empty</small>
                               </div>
-                              <div *ngIf="loginForm.get('phone')?.hasError('pattern')">
+                              <div *ngIf="loginForm.get('linkedphone')?.hasError('pattern')">
                               <small class="text-danger">Please enter a valid 10-digit phone number starting with 6 or 7 or 8 or 9 </small>
                               </div>
                               <div *ngIf="maya">
                               <small class="text-danger">Please enter a postpaid number</small>
                               </div>                     
                             </div>
-                          <button type="button" class="btn btn-dark" (click)="otpPage()">Send OTP</button><br>
+
+                             <button type="submit"  class="btn btn-dark">Link Now</button><br>
+                          <!-- <button type="button" class="btn btn-dark" (click)="otpPage()">Send OTP</button><br>
                           
                           <div class="otp" *ngIf="otp1">  
                             <div class="text-dark" style="color: black;">Enter 4-digit code from yout two factor authentication APP.</div>
@@ -99,7 +101,7 @@
                                 <ng-otp-input  (onInputChange)="onOtpChange($event)"  [config]="configOptions"></ng-otp-input>
                               </div>
                              <button (click)="validateOtp()" class="btn btn-dark" [ngClass]="btnStatus">{{ this.inputDigitLeft }}</button>             
-                          </div>
+                          </div> -->
 
                         </form>     
                   </div>

@@ -1,0 +1,36 @@
+<div class="table-container">
+    <div >
+      <table class="table table-striped">
+        <thead>
+            <tr>
+              <th>invoice ID</th>
+              <th>User ID</th>
+              <th>Plan ID</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Plan Name</th>
+              <th>Activation Date</th>
+              <th>Expiry Date</th>
+              <th>Payment</th>
+              <th>Action</th>       
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let i of invoiceData">
+              <td>{{i.user_plan_id}}</td>
+              <td>{{i.user_id}}</td>
+              <td>{{i.plan_id}}</td>
+              <td>{{i.Username}}</td>
+              <td>{{i.email}}</td>
+              <td>{{i.phone}}</td>
+              <td>{{i.plan_name}}</td>
+              <td>{{i.activation_date}}</td>
+              <td>{{i.expiry_date}}</td>
+              <td>{{i.price}}</td>
+              <td><button style="background-color: rgb(255, 255, 255);" (click)="sendEmail(i.email, i.username, i.price, i.activation_date, i.expiry_date, i.plan_name,i.phone)">Send Email</button></td>       
+            </tr>
+          </tbody>
+      </table>
+    </div>
+  </div>

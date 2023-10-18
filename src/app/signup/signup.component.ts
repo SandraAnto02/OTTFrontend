@@ -14,6 +14,7 @@ export class SignupComponent
   showSuccessMessage = false; 
   add: Users = new Users('', '', '','');
   submitted = false;
+  inputText: any;
 
   constructor(private userService:UserService)
   {
@@ -37,6 +38,27 @@ export class SignupComponent
   // resetForm() {
   //   this.formData = {}; // Reset the form data to empty values
   // }
+
+  exist:boolean = false;
+
+  checkPhoneNumberInDatabase() 
+  {
+    console.log("entered into checknum");
+    
+    if (this.inputText.length == 10) 
+    {
+      const data = {'number':this.inputText}
+      this.userService.gettt(data).subscribe(
+        res=>{
+          console.log(res)
+          if(res.checkCustomer =='EXIST')
+          {
+            this.exist = true
+          }
+        }
+      );
+    }
+  }
 
 }
 

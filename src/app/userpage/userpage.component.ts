@@ -5,6 +5,7 @@ import { Users } from '../module/users';
 import Swal from 'sweetalert2';
 import { timer } from 'rxjs';
 import { Router } from '@angular/router';
+import { LinkedMembersData } from './linkedmembersdata';
 
 @Component({
   selector: 'app-userpage',
@@ -19,11 +20,13 @@ export class UserpageComponent
   btnStatus: string = "btn-light";
   userdetails:any;
   receivedData:any;
-  usr: Users;
-  phone:FormControl;
-  username:FormControl;
-  email:FormControl;
+  linked:LinkedMembersData;
+  
+  linkedphone:FormControl;
+  linkedname:FormControl;
+  linkedemail:FormControl;
   checkmsg: any;
+  
 
 //-------------------------------Constructor-----------------------------------------------
 
@@ -32,15 +35,15 @@ export class UserpageComponent
     this.userService.getAllUsers().subscribe((users) => { this.userdetails = users;} );
     console.log(this.userdetails);
 
-    this.usr= new Users('','','','');
-    this.username=new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+$')])
-    this.email=new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')])
-    this.phone=new FormControl('',[Validators.required, Validators.minLength(3),Validators.pattern('[1-9][0-9]{9}$')]);
+    this.linked= new LinkedMembersData('','','');
+    this.linkedname=new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+$')])
+    this.linkedemail=new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')])
+    this.linkedphone=new FormControl('',[Validators.required, Validators.minLength(3),Validators.pattern('[1-9][0-9]{9}$')]);
    
     this.loginForm = new FormGroup({
-      username:this.username,
-      email:this.email,
-      phone:this.phone,
+      linkedname:this.linkedname,
+      linkedemail:this.linkedemail,
+      linkedphone:this.linkedphone,
 
     })
     console.log(this.inputText);
@@ -72,8 +75,8 @@ export class UserpageComponent
   otpPage()
   {
     this.otp1=true;
-    console.log(this.phone.value);
-    this.userService.generateOtp(this.phone.value);    
+    console.log(this.linkedphone.value);
+    this.userService.generateOtp(this.linkedphone.value);    
   }
 
 //------------------------OTP text box----------------------------------  
@@ -121,9 +124,42 @@ export class UserpageComponent
       );
     }
   }
+//--------------------linking account-----------------------------
+linkedData: LinkedMembersData=new LinkedMembersData("","","")  
+linkedAccount: LinkedMembersData[]=[]  //getting this in list from the spring 
+newLinkedAccount={
+  userid:'',                           //this is from springboot dto class userid
+  linkedAccount: this.linkedAccount    //this is from springboot dto class (list from linked account pojo)
 
-  submitForm()
-  {}
+
+}
+
+submitForm()
+  {
+    console.log("came to userpage submitform");
+    
+    this.newLinkedAccount.userid=this.receivedData.userid;
+    this.newLinkedAccount.linkedAccount.push(this.linkedData)
+    this.userService.linkAccount(this.newLinkedAccount).subscribe((response) =>{
+      console.log("linked account",response);
+      Swal.fire(
+        'Account Linked Successfully',
+        '',
+        'success'
+      )
+      
+    },(error)=>{
+      Swal.fire({
+        icon:'error',
+        title:'Failed to link',
+        text:'Enter correct OTP',
+        footer:'Back to login'
+      })
+    }
+    
+    )
+
+  }
 
 //----------------------------validating OTP-----------------------
 
@@ -148,14 +184,14 @@ export class UserpageComponent
         console.log('user validated');
         if (this.inputText==='7990318415'){
           Swal.fire(
-            'You are Logged in Successfully',
+            'Account Linked Successfully',
             '',
             'success'
           )
         }
         else{
           Swal.fire(
-            'You are Logged in Successfully',
+            'Account linked Successfully',
             '',
             'success')
 
@@ -183,5 +219,11 @@ export class UserpageComponent
       console.log(this.checkmsg.checkcustomer);
       
     })
+
+
+
   }
+
+
+
 }

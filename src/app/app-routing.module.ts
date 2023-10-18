@@ -11,6 +11,8 @@ import { AdminpageComponent } from './adminpage/adminpage.component';
 import { ViewusersComponent } from './viewusers/viewusers.component';
 import { UserviewplanComponent } from './userviewplan/userviewplan.component';
 import { PaybillComponent } from './paybill/paybill.component';
+import { LinkaccountviewComponent } from './linkaccountview/linkaccountview.component';
+import { ViewcsvComponent } from './viewcsv/viewcsv.component';
 
 const routes: Routes = [
 {
@@ -53,6 +55,14 @@ const routes: Routes = [
 {
   path:"paybill",
   component:PaybillComponent
+},
+{
+  path:"linkedmembers",
+  component:LinkaccountviewComponent
+},
+{
+  path:"csv",
+  component:ViewcsvComponent
 },
 {
   path:"**",

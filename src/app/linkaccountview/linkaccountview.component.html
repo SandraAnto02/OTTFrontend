@@ -1,0 +1,28 @@
+<app-userheader></app-userheader>
+<div class="table-container" style="margin-top: 90px;">
+    <div >
+      <table class="table table-striped">
+        <thead>
+            <tr>
+              <th>Members ID</th>
+              <th>Members Number</th>
+              <th>Memebers phone number</th>
+              <th>Members Email</th>       
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let l of user.linkedAccounts">
+              <td>{{l.linkedid}}</td>
+              <td>{{ l.linkedname}}</td>
+              <td>{{ l.linkedphone}}</td>
+              <td>{{ l.linkedemail}}</td>
+                     
+            </tr>
+          </tbody>
+      </table>
+    </div>
+  </div>
+  
+
+
+

@@ -53,7 +53,7 @@ submitForm()
 }
 
 
- //--------------------OTP box configuration-------------------- 
+//--------------------OTP box configuration-------------------- 
 
   formData: { mobile: string, enteredOtp:String } = { mobile: '',enteredOtp:'' };
   title = 'otp-app';
@@ -164,7 +164,7 @@ validateOtp()
     }
   }
 
- //------seperating admin and user no. and redirecting them to respective pages (without OTP)------- 
+//------seperating admin and user no. and redirecting them to respective pages (without OTP)------- 
   
  validateNumber(): void 
   {

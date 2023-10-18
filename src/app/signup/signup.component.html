@@ -9,7 +9,7 @@
         <div *ngIf="username.touched"> 
             <div *ngIf="username.invalid"> 
             <small class="text-danger" *ngIf="username.errors?.['required']">Please enter your name</small>
-            <small class="text-danger" *ngIf="username.errors?.['pattern']">Enter valid name</small>
+            <small class="text-danger" *ngIf="username.errors?.['pattern']">Enter valid </small>
             </div>
         </div>
       </div>
@@ -17,12 +17,16 @@
 
       <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Phone number</label>
-          <input type="tel" class="form-control" id="phone" placeholder="Enter Phone number" [(ngModel)]='usr.phone' name="phone" #phone="ngModel" required [class.is-invalid]="phone.invalid && phone.touched" pattern="^[1-9][0-9]{9}$">
+          <input type="tel" class="form-control" id="phone" placeholder="Enter Phone number" [(ngModel)]='usr.phone' [(ngModel)]="inputText"  name="phone" #phone="ngModel" required [class.is-invalid]="phone.invalid && phone.touched" pattern="^[1-9][0-9]{9}$" minlength="10" maxlength="10" (input)="checkPhoneNumberInDatabase()">
           <div *ngIf="phone.touched"> 
               <div *ngIf="phone.invalid"> 
               <small class="text-danger" *ngIf="phone.errors?.['required']">Phone number Can't be empty</small>
               <small class="text-danger" *ngIf="phone.errors?.['pattern']">Enter valid phone number</small>
+              <small class="text-danger" *ngIf="phone.errors?.['minlength']">Enter Valid phone number</small>
               </div>
+              <div *ngIf="exist">
+                <small class="text-danger">Already registered</small>
+              </div> 
           </div>
         </div>
         <div class="mb-3">
@@ -43,8 +47,10 @@
             <div *ngIf="password.invalid"> 
               <small class="text-danger" *ngIf="password.errors?.['required']">Enter Password</small>
               <small class="text-danger" *ngIf="password.errors?.['pattern']">Password should contain at least one uppercase letter, one lowercase letter, and one number</small>
+              
             </div>
           </div>
+          
         </div>
 
         <div *ngIf="showSuccessMessage" class="alert alert-success">

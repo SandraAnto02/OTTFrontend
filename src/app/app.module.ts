@@ -19,6 +19,8 @@ import { ViewusersComponent } from './viewusers/viewusers.component';
 import { PlancardComponent } from './plancard/plancard.component';
 import { UserviewplanComponent } from './userviewplan/userviewplan.component';
 import { PaybillComponent } from './paybill/paybill.component';
+import { LinkaccountviewComponent } from './linkaccountview/linkaccountview.component';
+import { ViewcsvComponent } from './viewcsv/viewcsv.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { PaybillComponent } from './paybill/paybill.component';
     PlancardComponent,
     UserviewplanComponent,
     PaybillComponent,
+    LinkaccountviewComponent,
+    ViewcsvComponent,
   ],
   imports: [
     BrowserModule,NgOtpInputModule,HttpClientModule,ReactiveFormsModule,

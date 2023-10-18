@@ -57,6 +57,37 @@ generateOtp(phoneNumber:string)
     console.log('this validation is from the generate otp user service');
     return this.httpClient.post<CheckCustomer>(this.url+"/validateotp",otp);
   }
+
+
+//-----------------------linked account------------------------------------
+
+linkAccount(linkedAccount:any)
+{
+  console.log('this linking is from userservice');
+  
+  return this.httpClient.post(this.url+"/linkaccounts",linkedAccount)
+
+}
+
+
+linkAccountView(userid:any)
+  {
+    return this.httpClient.get(`${this.url}/viewlinkaccounts/${userid}`);
+  }
+
+//----------------------CSV---------------------------------------------------
+
+//to send csv data
+getCsv()
+{
+  return this.httpClient.get('http://localhost:8585/csv/data',{ responseType:'text'})
+}
+
+
+getInvoices()
+{
+  return this.httpClient.get<any>('http://localhost:8585/csv/data');
+}
   
 }
 
