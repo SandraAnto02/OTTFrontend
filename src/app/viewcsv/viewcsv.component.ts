@@ -64,7 +64,7 @@ export class ViewcsvComponent
     };
   
     // Make an HTTP POST request to send the data to the backend
-    this.http.post('http://localhost:8585/admin', emailData).subscribe(
+    this.http.post('http://localhost:8586/admin', emailData).subscribe(
       (response) => {
         console.log('Email sent successfully:', response);
         // Handle any success logic here

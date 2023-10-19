@@ -22,6 +22,8 @@ export class ViewplansComponent
   {
     this.cardPlanService.getAllPlans().subscribe(
       (list)=>{
+        console.log(list);
+        
         this.planCardList=list;
       },
       (error)=>{

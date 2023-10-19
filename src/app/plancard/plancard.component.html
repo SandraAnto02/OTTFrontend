@@ -1,1 +1,31 @@
-<p>plancard works!</p>
+
+<app-userheader></app-userheader>
+<div class="table-container" style="padding-top: 60rem;">
+    <div >
+      <table class="table table-striped">
+        <thead>
+            <tr>
+              <th>Customer ID</th>
+              <th>Plan ID</th>
+              <th>Price</th>
+              <th>Activation Date</th>
+              <th>Expiry Date</th>
+                     
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let u of userPlans">
+              <td>{{u.userid}}</td>
+              <td>{{u.planid}}</td>
+              <td>{{u.price}}</td>
+              <td>{{u.activationdate}}</td>
+              <td>{{u.expirydate}}</td>
+                     
+            </tr>
+          </tbody>
+      </table>
+    </div>
+  </div>
+  
+
+

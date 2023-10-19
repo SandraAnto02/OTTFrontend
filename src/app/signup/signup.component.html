@@ -1,6 +1,6 @@
 <section class="login">
   <div class="login-card">
-    <h2>Sign Up</h2><br>
+    <h2>Sign Up</h2>
     <form #signupForm="ngForm" (ngSubmit)="onSignUp()">
 
       <div class="mb-3">
@@ -58,6 +58,9 @@
         </div>
         
         <button type="submit" [disabled]="signupForm.form.invalid">Sign Up</button> &nbsp;&nbsp;&nbsp;<button routerLink="/home" type="submit">Back</button>
+
+        <p style="color: white;">Already have an account? <a style="color: rgb(112, 171, 238);"   [routerLink]="['/login']">Log in</a></p>
+
   </form>
   
 

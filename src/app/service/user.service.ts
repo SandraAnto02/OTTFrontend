@@ -38,15 +38,15 @@ export class UserService
 
   }
 
- 
+//--------------------------------OTP------------------------------------ 
 
 generateOtp(phoneNumber:string)
 
   {
     // const body={phoneNumber}
-    console.log('this is from the generate otp user service');
+    console.log('this is from the generate otp user service'+phoneNumber);
     
-    this.httpClient.post(this.url+"/requestotp",phoneNumber).subscribe()
+     return this.httpClient.post(this.url+"/requestotp",phoneNumber)
     // console.log(phoneNumber);
 
   }
@@ -75,19 +75,21 @@ linkAccountView(userid:any)
     return this.httpClient.get(`${this.url}/viewlinkaccounts/${userid}`);
   }
 
-//----------------------CSV---------------------------------------------------
+//----------------------------CSV--------------------------
 
 //to send csv data
 getCsv()
 {
-  return this.httpClient.get('http://localhost:8585/csv/data',{ responseType:'text'})
+  return this.httpClient.get('http://localhost:8586/csv/data',{ responseType:'text'})
 }
 
 
 getInvoices()
 {
-  return this.httpClient.get<any>('http://localhost:8585/csv/data');
+  return this.httpClient.get<any>('http://localhost:8586/csv/data');
 }
+
+
   
 }
 

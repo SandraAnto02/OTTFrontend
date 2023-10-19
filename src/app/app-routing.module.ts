@@ -13,6 +13,7 @@ import { UserviewplanComponent } from './userviewplan/userviewplan.component';
 import { PaybillComponent } from './paybill/paybill.component';
 import { LinkaccountviewComponent } from './linkaccountview/linkaccountview.component';
 import { ViewcsvComponent } from './viewcsv/viewcsv.component';
+import { PlancardComponent } from './plancard/plancard.component';
 
 const routes: Routes = [
 {
@@ -63,6 +64,10 @@ const routes: Routes = [
 {
   path:"csv",
   component:ViewcsvComponent
+},
+{
+  path:"myplan",
+  component:PlancardComponent
 },
 {
   path:"**",

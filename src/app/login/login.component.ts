@@ -77,7 +77,7 @@ submitForm()
   {
     this.otp1=true;
     console.log(this.phone.value);
-    this.service.generateOtp(this.phone.value);    
+    this.service.generateOtp(this.phone.value).subscribe();    
   }
 
 

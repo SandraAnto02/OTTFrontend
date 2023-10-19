@@ -40,8 +40,9 @@
                 <p>SMS Per Day:&nbsp;&nbsp;&nbsp;{{ plan.sms }}</p>
                 <hr>
                 <p>{{ plan.offers }}</p><br>
-                <button routerLink="/paybill"  type="button" class="btn btn-dark">BUY</button>
+                <button (click)="choosedPlan(plan)" routerLink="/myplan" type="button" class="btn btn-dark">BUY</button>
                 <!-- [routerLink]="['/paybill', plan.id]" -->
+                
               </div>
             </div>
           </div>
